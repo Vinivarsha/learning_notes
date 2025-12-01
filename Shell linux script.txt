@@ -1,0 +1,51 @@
+Shel script:
+
+ls - list files
+-a hidden files
+-l long format
+-h human readable format
+-r reverse
+-t time modified
+
+#!/bin/bash: This is called a shebang. It tells the system to use the Bash shell to execute the script.
+
+echo 'Hello, World!': The echo command prints the text inside the quotes to the terminal.
+
+Double quotes ("): These allow for variable expansion and command substitution within the string. This means that if a variable like $HOME or a command substitution like $(pwd) is present within double quotes, its value or output will be substituted before being printed.
+
+Single quotes ('): These treat all characters within them literally, preventing variable expansion and command substitution. The string will be printed exactly as it appears.
+
+cat - concatenate - It's a command used to read and output the contents of files.
+
+chmod permission setting for a file
+
+Read (r) - 4
+Write (w) - 2
+Execute (x) - 1
+
+User Group Other
+
+chmod +x filename - set execute permission to all 
+chmod u+x filename - only to users
+chmod -11 - only to group & others
+
+whoami - check the current user
+id - gives your user id, group id and additional groups user belongs to (id username to see others accesslevel)
+
+delete command (rm)
+
+rm filename
+rm file1 file2 file3 
+rmdir directory_name (empty the directory)
+rm -r directory (-r recursive)
+-f forceful
+-i Interactive
+
+Move and rename(mv)
+
+mv /path/filename /new_patj
+mv filename new_filename - rename
+
+
+
+
