@@ -1,0 +1,270 @@
+Shel script:
+
+Day1: 
+
+ls - list files
+-a hidden files
+-l long format
+-h human readable format
+-r reverse
+-t time modified
+
+#!/bin/bash: This is called a shebang. It tells the system to use the Bash shell to execute the script.
+
+echo 'Hello, World!': The echo command prints the text inside the quotes to the terminal.
+
+Double quotes ("): These allow for variable expansion and command substitution within the string. This means that if a variable like $HOME or a command substitution like $(pwd) is present within double quotes, its value or output will be substituted before being printed.
+
+Single quotes ('): These treat all characters within them literally, preventing variable expansion and command substitution. The string will be printed exactly as it appears.
+
+cat - concatenate - It's a command used to read and output the contents of files.
+
+chmod permission setting for a file
+
+Read (r) - 4
+Write (w) - 2
+Execute (x) - 1
+
+User Group Other
+
+chmod +x filename - set execute permission to all 
+chmod u+x filename - only to users
+chmod -11 - only to group & others
+
+whoami - check the current user
+id - gives your user id, group id and additional groups user belongs to (id username to see others accesslevel)
+
+delete command (rm)
+
+rm filename
+rm file1 file2 file3 
+rmdir directory_name (empty the directory)
+rm -r directory (-r recursive)
+-f forceful
+-i Interactive
+
+Move and rename(mv)
+
+mv /path/filename /new_patj
+mv filename new_filename - rename
+
+Day2
+
+1. Create Shell Variables
+ Shell variables are created by assigning a value to them using the = sign.
+
+ #!/bin/bash
+
+PRICE_PER_APPLE=5
+MyFirstLetters=ABC
+greeting='Hello        world!'
+
+echo "Price per apple: $PRICE_PER_APPLE"
+echo "My first letters: $MyFirstLetters"
+echo "Greeting: $greeting" 
+
+2. Escaping special characters
+
+Use \$ to escape special characters. echo "The price of an Apple today is: \$ $PRICE_PER_APPLE" - The price of an Apple today is: $ 5
+Curly braces help clarify variable boundaries. echo "The first 10 letters in the alphabet are: ${MyFirstLetters}DEFGHIJ" - ABCDEFGHIJ
+Quoting variables preserves whitespace. 
+echo $greeting - Hello World!
+echo "$greeting" - Hello        World!
+
+3. Command Substitution
+Command substitution allows you to use the output of a command as the value of a variable. 
+This is done by enclosing the command with $() or backticks (``)
+
+# Command substitution
+CURRENT_DATE=$(date +"%Y-%m-%d")
+echo "Today's date is: $CURRENT_DATE"
+
+FILES_IN_DIR=$(ls)
+echo "Files in the current directory:"
+echo "$FILES_IN_DIR"
+
+UPTIME=$(uptime -p)
+echo "System uptime: $UPTIME"
+
+4. Arithmetic operation
+
+Shell variables can also be used in arithmetic operations.
+Bash provides the $((expression)) syntax for performing arithmetic.
+
+#!/bin/bash
+
+X=10
+Y=5
+
+# Addition
+SUM=$((X + Y))
+echo "Sum of $X and $Y is: $SUM"
+
+# Subtraction
+DIFF=$((X - Y))
+echo "Difference between $X and $Y is: $DIFF"
+
+# Multiplication
+PRODUCT=$((X * Y))
+echo "Product of $X and $Y is: $PRODUCT"
+
+# Division
+QUOTIENT=$((X / Y))
+echo "Quotient of $X divided by $Y is: $QUOTIENT"
+
+# Modulus (remainder)
+REMAINDER=$((X % Y))
+echo "Remainder of $X divided by $Y is: $REMAINDER"
+
+# Increment
+X=$((X + 1))
+echo "After incrementing, X is now: $X"
+
+# Decrement
+Y=$((Y - 1))
+echo "After decrementing, Y is now: $Y"
+
+5.passing run time values
+
+#!/bin/bash
+
+echo "Argument 1: $1"
+echo "Argument 2: $2"
+
+exexuting
+./script.sh hello 123
+
+O/P
+Argument 1: hello
+Argument 2: 123
+
+6. Reading user input
+
+#!/bin/bash
+
+echo -n "Enter your name: "
+read name
+
+echo "Hello $name"
+
+7.Creating and Displaying a New Environment Variable:
+
+export MY_VARIABLE="Hello from my variable"
+echo "My new variable: $MY_VARIABLE"
+export MY_VARIABLE="Hello from my variable" 
+
+creates a new environment variable named MY_VARIABLE.
+The next line prints the value of MY_VARIABLE.
+Demonstrating Variable Scope with a Child Process:
+
+echo "MY_VARIABLE in child process: $MY_VARIABLE"
+
+This command starts a new Bash shell and attempts to print MY_VARIABLE. Since it was exported, it will be accessible in the child process.
+
+Removing the Environment Variable:
+
+unset MY_VARIABLE
+
+This line removes MY_VARIABLE, making it no longer available.
+
+Verifying the Variable is Unset:
+
+echo "MY_VARIABLE after unsetting: $MY_VARIABLE"
+
+This prints the value of MY_VARIABLE after it has been unset, which should be empty.
+
+8. Grep command
+
+grep "error" logfile.txt
+grep -i "error" logfile.txt
+grep -c "error" logfile.txt
+
+Count matches: 
+grep -c "failed" logfile.txt 
+
+Show line numbers: 
+grep -n "timeout" server.log 
+
+Use regex: 
+grep -E "error|failed" logfile.txt # OR condition 
+grep -E "^[0-9]{3}" logfile.txt # lines starting with 3 digits -- not understood 
+
+Invert match (show NOT matching): 
+grep -v "INFO" app.log 
+
+Search recursively in directories: 
+grep -R "TODO" . 
+
+Real DevOps practical example: 
+grep -R "java.lang.NullPointer" /var/log/
+
+9. Comman commands
+
+cd ,ls, cp, mv, rm, pwd, cat, tail, head
+tac - reverse the cat output and print in screen
+nl - add linenumber and shows the output
+
+10. 8 must symbols
+
+* → wildcard (zero or more characters)  ls *.txt
+? → wildcard (exactly one character)  ls file?.txt
+. → dot
+In regex: matches any single character
+grep "a.b" file # matches acb, arb, a1b, etc.
+
+As file path:
+cd .        # current directory
+ls ./script.sh
+
+^ → regex: start of line
+grep "^ERROR" logfile.txt # lines that START with ERROR
+
+$ → regex: end of line
+grep "done$" logfile.txt # lines ending with "done"
+
+| → OR operator Used in regex or pipes.
+
+grep -E "fail|error" file
+
+Pipe:
+ps aux | grep nginx #combine 2 commands
+
+> → redirect output to file (overwrite)
+ls > out.txt
+
+This means:
+
+Take output of ls
+
+Write into out.txt
+
+If file exists → overwrite completely
+
+Example:
+
+echo "hello" > file.txt
+echo "world" > file.txt
+
+
+Final content of file.txt:
+
+world
+
+
+>> → append output to file
+
+
+echo "new line" >> file.txt
+
+If file.txt:
+
+hello
+world
+
+After:
+
+hello
+world
+new line
+
+Used when you want logs or growing files.
