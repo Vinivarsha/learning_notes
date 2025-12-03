@@ -10,6 +10,13 @@ ls - list files
 -t time modified
 
 #!/bin/bash: This is called a shebang. It tells the system to use the Bash shell to execute the script.
+The first line is called the "shebang" or "hashbang". 
+It tells the system which interpreter to use to execute the script. 
+In this case, we're using bash.
+
+For beginners: The shebang line is important because it allows you to run the script directly (like ./arguments.sh) instead of having to type bash arguments.sh every time. 
+It's a small detail, but it makes your scripts more convenient to use.
+
 
 echo 'Hello, World!': The echo command prints the text inside the quotes to the terminal.
 
@@ -268,3 +275,42 @@ world
 new line
 
 Used when you want logs or growing files.
+
+$# gives total count of arguments passed to the script
+
+Day3
+
+If else condition
+
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided."
+elif [ $# -eq 1 ]; then
+  echo "One argument provided: $1"
+elif [ $# -eq 2 ]; then
+  echo "Two arguments provided: $1 and $2"
+else
+  echo "More than two arguments provided:"
+  echo "First argument: $1"
+  echo "Second argument: $2"
+  echo "Third argument: $3"
+  echo "Total number of arguments: $#"
+fi
+
+elif is short for "else if". It allows you to check multiple conditions in sequence.
+The -eq operator means "equal to". 
+There are other operators like -lt (less than), -gt (greater than), etc.
+
+for loop
+
+#!/bin/bash
+
+echo "Total number of arguments: $#"
+echo "All arguments:"
+
+count=1
+for arg in "$@"; do
+  echo "Argument $count: $arg"
+  count=$((count + 1))
+done
