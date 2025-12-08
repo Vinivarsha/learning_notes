@@ -314,3 +314,26 @@ for arg in "$@"; do
   echo "Argument $count: $arg"
   count=$((count + 1))
 done
+
+Day 4
+
+pwd - present working directory will be displayed
+
+cd / - moves to root directory
+
+~ - gives home directory 
+
+echo - print command
+
+echo "Hidden file" > .hiddenfile
+This creates a hidden file. In Linux, any file or directory 
+name that starts with a dot (.) is considered hidden.
+
+The essential file operations in Linux:
+
+Navigating the file system with cd and pwd
+Creating files and directories with touch and mkdir
+Listing contents with ls and its options
+Copying files and directories with cp
+Moving and renaming with mv
+Removing files and directories with rm and rmdir
