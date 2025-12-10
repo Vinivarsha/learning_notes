@@ -337,3 +337,34 @@ Listing contents with ls and its options
 Copying files and directories with cp
 Moving and renaming with mv
 Removing files and directories with rm and rmdir
+
+Day 5
+
+-r or -R Recursive
+This option tells the command to go inside directories, 
+process all subdirectories and files inside them.
+
+-f force 
+This skips warnings, ignores errors, and does things without asking.
+
+cat - concatenate
+
+This command stands for "concatenate" 
+and is commonly used to read and display the contents of files.
+
+  -n with line number display
+
+head - fetches first 10 lines 
+if specify with number will fetch 'n' number specified lines
+
+-c fetch specified nth character
+
+tail - fetch last 10 lines
+
+Comparing file
+
+diff 
+
+< this is file1: The < symbol indicates a line from the first file (file1).
+---: This is a separator between the lines from file1 and file2.
+> this is file2: The > symbol indicates a line from the second file (file2).
